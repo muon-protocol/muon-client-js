@@ -1,5 +1,5 @@
 {
-  "name": "muon-client-js",
+  "name": "muon",
   "version": "1.0.0",
   "description": "",
   "main": "dist/bundle.cjs.js",

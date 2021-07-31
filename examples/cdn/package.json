@@ -4,9 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "serve": "serve"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "muon-client-js": "github:muon-protocol/muon-client-js",
+  },
+  "devDependencies": {
+    "serve": "^12.0.0"
+  }
 }
