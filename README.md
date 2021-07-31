@@ -1,0 +1,2 @@
+# MuonSDK
+npm run build
