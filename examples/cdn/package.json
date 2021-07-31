@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "muon": "github:muon-protocol/muon-client-js",
     "muon-client-js": "github:muon-protocol/muon-client-js"
   },
   "devDependencies": {

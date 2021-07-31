@@ -27,7 +27,8 @@
     "@babel/runtime": "^7.13.10",
     "axios": "^0.21.1",
     "core-js": "^3.10.2",
-    "moment": "^2.29.1"
+    "moment": "^2.29.1",
+    "muon": "github:muon-protocol/muon-client-js"
   },
   "author": "Zahra Namazi <namazi.q@gmail.com>",
   "repository": {
