@@ -15,8 +15,9 @@ Create a muon instance and set a provider and count muon signature
     const Muon = window.muon
     let muon = new Muon(provider, nSign)
 
-** provider: address muon node
-** nSign: number of signatures you need as a default is 2
+\*\* provider: address muon node
+
+\*\* nSign: number of signatures you need as a default is 2
 
     const muonResponse = await muon
           .app('nameOfApp')
