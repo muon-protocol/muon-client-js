@@ -12,7 +12,7 @@ function App() {
 
       // call method custom app
 
-      const resultCustomApp = await muon
+      const muonResponse = await muon
         .app('eth')
         .method('addBridgeToken', {
           mainTokenAddress: '0x4Ef4E0b448AC75b7285c334e215d384E7227A2E6',
@@ -21,7 +21,7 @@ function App() {
         })
         .call()
 
-      setResultCustomAPP(JSON.stringify(resultCustomApp, undefined, 2))
+      setResultCustomAPP(JSON.stringify(muonResponse, undefined, 2))
 
       // call method plugin eth
 
