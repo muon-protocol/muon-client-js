@@ -45,6 +45,7 @@ how to use this signatures and \_reqId
 
     Contract.methods
         .[methodName](...params,muonResponse.signatures,muonResponse._reqId)
+        .send({ from: account })
 
 # Serve on localhost
 
