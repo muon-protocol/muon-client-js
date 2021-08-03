@@ -19,11 +19,6 @@ provider: muon node address
 
 nSign: number of signatures you need as a default is 2
 
-# Example
-
-    let muon = new Muon('https://node1.muon.net/v1/')
-
-
     const muonResponse = await muon
           .app('nameOfApp')
           .method('nameOfMethod', {
@@ -32,6 +27,8 @@ nSign: number of signatures you need as a default is 2
           .call()
 
 # Example
+
+    let muon = new Muon('https://node1.muon.net/v1/')
 
     const muonResponse = await muon
           .app('eth')
