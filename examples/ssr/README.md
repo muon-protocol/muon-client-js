@@ -38,7 +38,7 @@ nSign: number of signatures you need as a default is 2
           })
           .call()
 
-how to use this signatures and \_reqId
+how to use these signatures and \_reqId
 
     const Contract = new web3.eth.Contract(contractAbi, contractAddress)
 
