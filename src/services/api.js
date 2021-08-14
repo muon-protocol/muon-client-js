@@ -11,10 +11,18 @@ class Api {
   }
 
   get(url, config = null) {
-    return this.client.get(url, config)
+    try {
+      return this.client.get(url, config)
+    } catch (error) {
+      console.log('error happend in get Axios', error)
+    }
   }
   post(url, params, config = null) {
-    return this.client.post(url, params, config)
+    try {
+      return this.client.post(url, params, config)
+    } catch (error) {
+      console.log('error happend in post Axios', error)
+    }
   }
   delete(url, config = null) {
     return this.client.delete(url, config)
