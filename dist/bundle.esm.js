@@ -18456,7 +18456,7 @@ var Muon = /*#__PURE__*/function () {
     key: "request",
     value: function () {
       var _request = _asyncToGenerator( /*#__PURE__*/regenerator.mark(function _callee(dataInfo) {
-        var _data$result, _data$result2, _data$result2$signatu, apiInstance, muonResponse, data, _reqId, signatures;
+        var _data$result, _data$result2, _data$result2$signatu, apiInstance, muonResponse, data, _reqId, sortSignatures, signatures;
 
         return regenerator.wrap(function _callee$(_context) {
           while (1) {
@@ -18471,27 +18471,30 @@ var Muon = /*#__PURE__*/function () {
                 muonResponse = _context.sent;
                 data = muonResponse.data;
                 _reqId = "0x".concat((_data$result = data.result) === null || _data$result === void 0 ? void 0 : _data$result.cid.substr(1));
-                signatures = (_data$result2 = data.result) === null || _data$result2 === void 0 ? void 0 : (_data$result2$signatu = _data$result2.signatures) === null || _data$result2$signatu === void 0 ? void 0 : _data$result2$signatu.map(function (s) {
+                sortSignatures = (_data$result2 = data.result) === null || _data$result2 === void 0 ? void 0 : (_data$result2$signatu = _data$result2.signatures) === null || _data$result2$signatu === void 0 ? void 0 : _data$result2$signatu.sort(function (a, b) {
+                  return a.owner.localeCompare(b.owner);
+                });
+                signatures = sortSignatures.map(function (s) {
                   return s.signature;
-                }).sort();
+                });
                 data = _objectSpread(_objectSpread({}, data), {}, {
                   signatures: signatures,
                   _reqId: _reqId
                 });
                 return _context.abrupt("return", data);
 
-              case 12:
-                _context.prev = 12;
+              case 13:
+                _context.prev = 13;
                 _context.t0 = _context["catch"](0);
                 console.log('error happend in request muon', _context.t0);
                 return _context.abrupt("return", _context.t0.message);
 
-              case 16:
+              case 17:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[0, 12]]);
+        }, _callee, this, [[0, 13]]);
       }));
 
       function request(_x) {

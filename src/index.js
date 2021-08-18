@@ -22,7 +22,11 @@ class Muon {
       const muonResponse = await apiInstance.post(this.BASE_URL, dataInfo)
       let { data } = muonResponse
       let _reqId = `0x${data.result?.cid.substr(1)}`
-      let signatures = data.result?.signatures?.map((s) => s.signature).sort()
+      let sortSignatures = data.result?.signatures?.sort((a, b) => {
+        return a.owner.localeCompare(b.owner)
+      })
+      let signatures = sortSignatures.map((s) => s.signature)
+
       data = { ...data, signatures, _reqId }
       return data
     } catch (error) {

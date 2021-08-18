@@ -26,6 +26,8 @@
             targetNetwork: 'rinkeby'
           })
           .call()
+
+        console.log(muonResponse)
         const dataCustomApp = JSON.stringify(muonResponse, undefined, 2)
 
         document.getElementById('customApp').textContent = dataCustomApp
