@@ -25,6 +25,7 @@ class Muon {
       let sortSignatures = data.result?.signatures?.sort((a, b) => {
         return a.owner.localeCompare(b.owner)
       })
+      console.log('sortSignatures', sortSignatures)
       let signatures = sortSignatures.map((s) => s.signature)
 
       data = { ...data, signatures, _reqId }

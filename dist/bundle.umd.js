@@ -18480,6 +18480,7 @@
                   sortSignatures = (_data$result2 = data.result) === null || _data$result2 === void 0 ? void 0 : (_data$result2$signatu = _data$result2.signatures) === null || _data$result2$signatu === void 0 ? void 0 : _data$result2$signatu.sort(function (a, b) {
                     return a.owner.localeCompare(b.owner);
                   });
+                  console.log('sortSignatures', sortSignatures);
                   signatures = sortSignatures.map(function (s) {
                     return s.signature;
                   });
@@ -18489,18 +18490,18 @@
                   });
                   return _context.abrupt("return", data);
 
-                case 13:
-                  _context.prev = 13;
+                case 14:
+                  _context.prev = 14;
                   _context.t0 = _context["catch"](0);
                   console.log('error happend in request muon', _context.t0);
                   return _context.abrupt("return", _context.t0.message);
 
-                case 17:
+                case 18:
                 case "end":
                   return _context.stop();
               }
             }
-          }, _callee, this, [[0, 13]]);
+          }, _callee, this, [[0, 14]]);
         }));
 
         function request(_x) {
