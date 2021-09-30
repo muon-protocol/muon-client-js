@@ -31,10 +31,10 @@ class Muon {
 
       let responseData = {
         ...result,
-        signature,
+        signature: [signature],
         reqId,
-        groupAddress,
-        nonceAddress
+        groupAddress: [groupAddress],
+        nonceAddress: [nonceAddress]
       }
       return responseData
     } catch (error) {

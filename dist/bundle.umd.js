@@ -18480,10 +18480,10 @@
                   signature = result.signatures[0].signature;
                   nonceAddress = result.data.init.nonceAddress;
                   responseData = _objectSpread(_objectSpread({}, result), {}, {
-                    signature: signature,
+                    signature: [signature],
                     reqId: reqId,
-                    groupAddress: groupAddress,
-                    nonceAddress: nonceAddress
+                    groupAddress: [groupAddress],
+                    nonceAddress: [nonceAddress]
                   });
                   return _context.abrupt("return", responseData);
 
