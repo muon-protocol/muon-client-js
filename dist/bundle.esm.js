@@ -18456,8 +18456,7 @@ var Muon = /*#__PURE__*/function () {
     key: "request",
     value: function () {
       var _request = _asyncToGenerator( /*#__PURE__*/regenerator.mark(function _callee(dataInfo) {
-        var _data$result, _data$result2, _data$result2$signatu, apiInstance, muonResponse, data, _reqId, sortSignatures, signatures;
-
+        var apiInstance, muonResponse, result, reqId, groupAddress, signature, nonceAddress, responseData;
         return regenerator.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -18469,20 +18468,18 @@ var Muon = /*#__PURE__*/function () {
 
               case 4:
                 muonResponse = _context.sent;
-                data = muonResponse.data;
-                _reqId = "0x".concat((_data$result = data.result) === null || _data$result === void 0 ? void 0 : _data$result.cid.substr(1));
-                sortSignatures = (_data$result2 = data.result) === null || _data$result2 === void 0 ? void 0 : (_data$result2$signatu = _data$result2.signatures) === null || _data$result2$signatu === void 0 ? void 0 : _data$result2$signatu.sort(function (a, b) {
-                  return a.owner.localeCompare(b.owner);
+                result = muonResponse.data.result;
+                reqId = "0x".concat(result.cid.substr(1));
+                groupAddress = result.signatures[0].owner;
+                signature = result.signatures[0].signature;
+                nonceAddress = result.data.init.nonceAddress;
+                responseData = _objectSpread(_objectSpread({}, result), {}, {
+                  signature: signature,
+                  reqId: reqId,
+                  groupAddress: groupAddress,
+                  nonceAddress: nonceAddress
                 });
-                console.log('sortSignatures', sortSignatures);
-                signatures = sortSignatures.map(function (s) {
-                  return s.signature;
-                });
-                data = _objectSpread(_objectSpread({}, data), {}, {
-                  signatures: signatures,
-                  _reqId: _reqId
-                });
-                return _context.abrupt("return", data);
+                return _context.abrupt("return", responseData);
 
               case 14:
                 _context.prev = 14;

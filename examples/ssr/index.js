@@ -5,7 +5,8 @@ const port = 3050
 const app = express()
 
 app.get('*', async (req, res) => {
-  const muon = new Muon('https://node1.muon.net/v1/', 3)
+  // const muon = new Muon('https://node1.muon.net/v1/', 3)
+  const muon = new Muon('http://104.131.177.195:8081/v1', 3)
 
   // call method custom app
 

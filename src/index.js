@@ -20,16 +20,23 @@ class Muon {
     try {
       const apiInstance = new Api()
       const muonResponse = await apiInstance.post(this.BASE_URL, dataInfo)
-      let { data } = muonResponse
-      let _reqId = `0x${data.result?.cid.substr(1)}`
-      let sortSignatures = data.result?.signatures?.sort((a, b) => {
-        return a.owner.localeCompare(b.owner)
-      })
-      console.log('sortSignatures', sortSignatures)
-      let signatures = sortSignatures.map((s) => s.signature)
+      let {
+        data: { result }
+      } = muonResponse
 
-      data = { ...data, signatures, _reqId }
-      return data
+      let reqId = `0x${result.cid.substr(1)}`
+      let groupAddress = result.signatures[0].owner
+      let signature = result.signatures[0].signature
+      let nonceAddress = result.data.init.nonceAddress
+
+      let responseData = {
+        ...result,
+        signature,
+        reqId,
+        groupAddress,
+        nonceAddress
+      }
+      return responseData
     } catch (error) {
       console.log('error happend in request muon', error)
       return error.message
