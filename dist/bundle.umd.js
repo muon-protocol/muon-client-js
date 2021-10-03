@@ -18462,7 +18462,7 @@
       key: "request",
       value: function () {
         var _request = _asyncToGenerator( /*#__PURE__*/regenerator.mark(function _callee(dataInfo) {
-          var apiInstance, muonResponse, result, reqId, groupAddress, signature, nonceAddress, responseData;
+          var apiInstance, muonResponse, result, reqId, groupAddress, signature, nonceAddress, sigs, responseData;
           return regenerator.wrap(function _callee$(_context) {
             while (1) {
               switch (_context.prev = _context.next) {
@@ -18479,26 +18479,29 @@
                   groupAddress = result.signatures[0].owner;
                   signature = result.signatures[0].signature;
                   nonceAddress = result.data.init.nonceAddress;
+                  sigs = [{
+                    signature: signature,
+                    owner: groupAddress,
+                    nonce: nonceAddress
+                  }];
                   responseData = _objectSpread(_objectSpread({}, result), {}, {
-                    signature: [signature],
-                    reqId: reqId,
-                    groupAddress: [groupAddress],
-                    nonceAddress: [nonceAddress]
+                    sigs: sigs,
+                    reqId: reqId
                   });
                   return _context.abrupt("return", responseData);
 
-                case 14:
-                  _context.prev = 14;
+                case 15:
+                  _context.prev = 15;
                   _context.t0 = _context["catch"](0);
                   console.log('error happend in request muon', _context.t0);
                   return _context.abrupt("return", _context.t0.message);
 
-                case 18:
+                case 19:
                 case "end":
                   return _context.stop();
               }
             }
-          }, _callee, this, [[0, 14]]);
+          }, _callee, this, [[0, 15]]);
         }));
 
         function request(_x) {

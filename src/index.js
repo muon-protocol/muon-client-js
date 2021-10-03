@@ -29,12 +29,18 @@ class Muon {
       let signature = result.signatures[0].signature
       let nonceAddress = result.data.init.nonceAddress
 
+      let sigs = [
+        {
+          signature: signature,
+          owner: groupAddress,
+          nonce: nonceAddress
+        }
+      ]
+
       let responseData = {
         ...result,
-        signature: [signature],
-        reqId,
-        groupAddress: [groupAddress],
-        nonceAddress: [nonceAddress]
+        sigs,
+        reqId
       }
       return responseData
     } catch (error) {
