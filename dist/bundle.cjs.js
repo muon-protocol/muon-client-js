@@ -914,6 +914,7 @@ var Eth = /*#__PURE__*/function () {
   }, {
     key: "callContract",
     value: function callContract(contractAddress, method, params, ABI, network) {
+      var outputs = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : [];
       var abi = [ABI.find(function (_ref) {
         var name = _ref.name,
             type = _ref.type;
@@ -927,13 +928,31 @@ var Eth = /*#__PURE__*/function () {
           method: method,
           params: params,
           abi: abi,
-          outputs: ['user', 'amount', 'fromChain', 'toChain', 'tokenId', 'txId'],
-          network: network
+          network: network,
+          outputs: outputs
         },
         nSign: this.muon.nSign
       };
       return this.muon.request(data);
-    }
+    } // callContract(contractAddress, method, params, ABI, network) {
+    //   let abi = [
+    //     ABI.find(({ name, type }) => name === method && type === 'function')
+    //   ]
+    //   let data = {
+    //     app: 'eth',
+    //     method: 'call',
+    //     params: {
+    //       address: contractAddress,
+    //       method,
+    //       params,
+    //       abi,
+    //       network
+    //     },
+    //     nSign: this.muon.nSign
+    //   }
+    //   return this.muon.request(data)
+    // }
+
   }]);
 
   return Eth;
@@ -1030,29 +1049,30 @@ var Muon = /*#__PURE__*/function () {
                 groupAddress = result.signatures[0].owner;
                 signature = result.signatures[0].signature;
                 nonceAddress = result.data.init.nonceAddress;
+                console.log('Data Muon SDK');
                 sigs = [{
                   signature: signature,
                   owner: groupAddress,
                   nonce: nonceAddress
                 }];
                 responseData = _objectSpread(_objectSpread({}, result), {}, {
-                  sigs: sigs,
-                  reqId: reqId
+                  reqId: reqId,
+                  sigs: sigs
                 });
                 return _context.abrupt("return", responseData);
 
-              case 15:
-                _context.prev = 15;
+              case 16:
+                _context.prev = 16;
                 _context.t0 = _context["catch"](0);
                 console.log('error happend in request muon', _context.t0);
                 return _context.abrupt("return", _context.t0.message);
 
-              case 19:
+              case 20:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[0, 15]]);
+        }, _callee, this, [[0, 16]]);
       }));
 
       function request(_x) {

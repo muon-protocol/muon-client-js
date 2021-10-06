@@ -28,7 +28,7 @@ class Muon {
       let groupAddress = result.signatures[0].owner
       let signature = result.signatures[0].signature
       let nonceAddress = result.data.init.nonceAddress
-
+      console.log('Data Muon SDK')
       let sigs = [
         {
           signature: signature,
@@ -39,8 +39,8 @@ class Muon {
 
       let responseData = {
         ...result,
-        sigs,
-        reqId
+        reqId,
+        sigs
       }
       return responseData
     } catch (error) {

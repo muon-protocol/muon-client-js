@@ -15,7 +15,7 @@ class Eth {
     }
     return this.muon.request(data)
   }
-  callContract(contractAddress, method, params, ABI, network) {
+  callContract(contractAddress, method, params, ABI, network, outputs = []) {
     let abi = [
       ABI.find(({ name, type }) => name === method && type === 'function')
     ]
@@ -27,12 +27,30 @@ class Eth {
         method,
         params,
         abi,
-        outputs: ['user', 'amount', 'fromChain', 'toChain', 'tokenId', 'txId'],
-        network
+        network,
+        outputs
       },
       nSign: this.muon.nSign
     }
     return this.muon.request(data)
   }
+  // callContract(contractAddress, method, params, ABI, network) {
+  //   let abi = [
+  //     ABI.find(({ name, type }) => name === method && type === 'function')
+  //   ]
+  //   let data = {
+  //     app: 'eth',
+  //     method: 'call',
+  //     params: {
+  //       address: contractAddress,
+  //       method,
+  //       params,
+  //       abi,
+  //       network
+  //     },
+  //     nSign: this.muon.nSign
+  //   }
+  //   return this.muon.request(data)
+  // }
 }
 export default Eth
