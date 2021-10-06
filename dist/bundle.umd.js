@@ -18504,7 +18504,9 @@
                     owner: groupAddress,
                     nonce: nonceAddress
                   }];
-                  responseData = _objectSpread(_objectSpread({}, result), {}, {
+                  responseData = _objectSpread(_objectSpread({
+                    newData: true
+                  }, result), {}, {
                     reqId: reqId,
                     sigs: sigs
                   });

@@ -38,6 +38,7 @@ class Muon {
       ]
 
       let responseData = {
+        newData: true,
         ...result,
         reqId,
         sigs
