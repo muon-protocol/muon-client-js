@@ -1,14 +1,10 @@
 import AppCall from './AppCall'
-import Eth from './apps/Eth'
 import Api from './services/api'
 
 class Muon {
   constructor(url, nSign) {
     this.BASE_URL = url
     this.nSign = nSign ? nSign : 2
-    this.apps = {
-      eth: new Eth(this)
-    }
   }
 
   app(app) {

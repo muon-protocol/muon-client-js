@@ -902,75 +902,6 @@ var AppCall = /*#__PURE__*/function () {
   return AppCall;
 }();
 
-var Eth = /*#__PURE__*/function () {
-  function Eth(muon) {
-    _classCallCheck(this, Eth);
-
-    this.muon = muon;
-  }
-
-  _createClass(Eth, [{
-    key: "addBridgeToken",
-    value: function addBridgeToken(mainTokenAddress, mainNetwork, targetNetwork) {
-      var data = {
-        app: 'eth',
-        method: 'addBridgeToken',
-        params: {
-          mainTokenAddress: mainTokenAddress,
-          mainNetwork: mainNetwork,
-          targetNetwork: targetNetwork
-        },
-        nSign: this.muon.nSign
-      };
-      return this.muon.request(data);
-    }
-  }, {
-    key: "callContract",
-    value: function callContract(contractAddress, method, params, ABI, network) {
-      var outputs = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : [];
-      var abi = [ABI.find(function (_ref) {
-        var name = _ref.name,
-            type = _ref.type;
-        return name === method && type === 'function';
-      })];
-      var data = {
-        app: 'eth',
-        method: 'call',
-        params: {
-          address: contractAddress,
-          method: method,
-          params: params,
-          abi: abi,
-          network: network,
-          outputs: outputs
-        },
-        nSign: this.muon.nSign
-      };
-      return this.muon.request(data);
-    } // callContract(contractAddress, method, params, ABI, network) {
-    //   let abi = [
-    //     ABI.find(({ name, type }) => name === method && type === 'function')
-    //   ]
-    //   let data = {
-    //     app: 'eth',
-    //     method: 'call',
-    //     params: {
-    //       address: contractAddress,
-    //       method,
-    //       params,
-    //       abi,
-    //       network
-    //     },
-    //     nSign: this.muon.nSign
-    //   }
-    //   return this.muon.request(data)
-    // }
-
-  }]);
-
-  return Eth;
-}();
-
 var bind = function bind(fn, thisArg) {
   return function wrap() {
     var args = new Array(arguments.length);
@@ -18460,9 +18391,6 @@ var Muon = /*#__PURE__*/function () {
 
     this.BASE_URL = url;
     this.nSign = nSign ? nSign : 2;
-    this.apps = {
-      eth: new Eth(this)
-    };
   }
 
   _createClass(Muon, [{
