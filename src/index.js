@@ -17,8 +17,7 @@ class Muon {
       const apiInstance = new Api()
       const muonResponse = await apiInstance.post(this.BASE_URL, dataInfo)
 
-      console.log('sdk resposne', muonResponse.data)
-      if (muonResponse.success) {
+      if (muonResponse.data.success) {
         let {
           data: { result }
         } = muonResponse
