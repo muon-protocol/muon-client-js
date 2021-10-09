@@ -18409,7 +18409,7 @@
       key: "request",
       value: function () {
         var _request = _asyncToGenerator( /*#__PURE__*/regenerator.mark(function _callee(dataInfo) {
-          var _result$cid, _result$signatures$, _result$signatures$2, _result$data, _result$data$init, apiInstance, muonResponse, result, reqId, groupAddress, signature, nonceAddress, sigs, responseData;
+          var apiInstance, muonResponse, result, _result$cid, _result$signatures$, _result$signatures$2, _result$data, _result$data$init, reqId, groupAddress, signature, nonceAddress, sigs, responseData;
 
           return regenerator.wrap(function _callee$(_context) {
             while (1) {
@@ -18423,6 +18423,12 @@
                 case 4:
                   muonResponse = _context.sent;
                   result = muonResponse.data.result;
+
+                  if (!muonResponse.success) {
+                    _context.next = 16;
+                    break;
+                  }
+
                   reqId = "0x".concat((_result$cid = result.cid) === null || _result$cid === void 0 ? void 0 : _result$cid.substr(1));
                   groupAddress = (_result$signatures$ = result.signatures[0]) === null || _result$signatures$ === void 0 ? void 0 : _result$signatures$.owner;
                   signature = (_result$signatures$2 = result.signatures[0]) === null || _result$signatures$2 === void 0 ? void 0 : _result$signatures$2.signature;
@@ -18438,18 +18444,24 @@
                   });
                   return _context.abrupt("return", responseData);
 
-                case 15:
-                  _context.prev = 15;
+                case 16:
+
+                case 17:
+                  _context.next = 23;
+                  break;
+
+                case 19:
+                  _context.prev = 19;
                   _context.t0 = _context["catch"](0);
                   console.log('error happend in request muon', _context.t0);
                   return _context.abrupt("return", _context.t0.message);
 
-                case 19:
+                case 23:
                 case "end":
                   return _context.stop();
               }
             }
-          }, _callee, this, [[0, 15]]);
+          }, _callee, this, [[0, 19]]);
         }));
 
         function request(_x) {

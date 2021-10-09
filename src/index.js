@@ -19,25 +19,26 @@ class Muon {
       let {
         data: { result }
       } = muonResponse
+      if (muonResponse.success) {
+        let reqId = `0x${result.cid?.substr(1)}`
+        let groupAddress = result.signatures[0]?.owner
+        let signature = result.signatures[0]?.signature
+        let nonceAddress = result.data?.init?.nonceAddress
+        let sigs = [
+          {
+            signature: signature,
+            owner: groupAddress,
+            nonce: nonceAddress
+          }
+        ]
 
-      let reqId = `0x${result.cid?.substr(1)}`
-      let groupAddress = result.signatures[0]?.owner
-      let signature = result.signatures[0]?.signature
-      let nonceAddress = result.data?.init?.nonceAddress
-      let sigs = [
-        {
-          signature: signature,
-          owner: groupAddress,
-          nonce: nonceAddress
+        let responseData = {
+          ...result,
+          reqId,
+          sigs
         }
-      ]
-
-      let responseData = {
-        ...result,
-        reqId,
-        sigs
-      }
-      return responseData
+        return responseData
+      } else muonResponse
     } catch (error) {
       console.log('error happend in request muon', error)
       return error.message
