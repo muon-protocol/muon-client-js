@@ -16,10 +16,12 @@ class Muon {
     try {
       const apiInstance = new Api()
       const muonResponse = await apiInstance.post(this.BASE_URL, dataInfo)
-      let {
-        data: { result }
-      } = muonResponse
+
+      console.log('sdk resposne', muonResponse.data)
       if (muonResponse.success) {
+        let {
+          data: { result }
+        } = muonResponse
         let reqId = `0x${result.cid?.substr(1)}`
         let groupAddress = result.signatures[0]?.owner
         let signature = result.signatures[0]?.signature
@@ -38,7 +40,7 @@ class Muon {
           sigs
         }
         return responseData
-      } else muonResponse
+      } else return muonResponse.data
     } catch (error) {
       console.log('error happend in request muon', error)
       return error.message
