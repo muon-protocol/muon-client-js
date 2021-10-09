@@ -18409,7 +18409,8 @@
       key: "request",
       value: function () {
         var _request = _asyncToGenerator( /*#__PURE__*/regenerator.mark(function _callee(dataInfo) {
-          var apiInstance, muonResponse, result, reqId, groupAddress, signature, nonceAddress, sigs, responseData;
+          var _result$cid, _result$signatures$, _result$signatures$2, _result$data, _result$data$init, apiInstance, muonResponse, result, reqId, groupAddress, signature, nonceAddress, sigs, responseData;
+
           return regenerator.wrap(function _callee$(_context) {
             while (1) {
               switch (_context.prev = _context.next) {
@@ -18422,36 +18423,33 @@
                 case 4:
                   muonResponse = _context.sent;
                   result = muonResponse.data.result;
-                  reqId = "0x".concat(result.cid.substr(1));
-                  groupAddress = result.signatures[0].owner;
-                  signature = result.signatures[0].signature;
-                  nonceAddress = result.data.init.nonceAddress;
-                  console.log('Data Muon SDK');
+                  reqId = "0x".concat((_result$cid = result.cid) === null || _result$cid === void 0 ? void 0 : _result$cid.substr(1));
+                  groupAddress = (_result$signatures$ = result.signatures[0]) === null || _result$signatures$ === void 0 ? void 0 : _result$signatures$.owner;
+                  signature = (_result$signatures$2 = result.signatures[0]) === null || _result$signatures$2 === void 0 ? void 0 : _result$signatures$2.signature;
+                  nonceAddress = (_result$data = result.data) === null || _result$data === void 0 ? void 0 : (_result$data$init = _result$data.init) === null || _result$data$init === void 0 ? void 0 : _result$data$init.nonceAddress;
                   sigs = [{
                     signature: signature,
                     owner: groupAddress,
                     nonce: nonceAddress
                   }];
-                  responseData = _objectSpread(_objectSpread({
-                    newData: true
-                  }, result), {}, {
+                  responseData = _objectSpread(_objectSpread({}, result), {}, {
                     reqId: reqId,
                     sigs: sigs
                   });
                   return _context.abrupt("return", responseData);
 
-                case 16:
-                  _context.prev = 16;
+                case 15:
+                  _context.prev = 15;
                   _context.t0 = _context["catch"](0);
                   console.log('error happend in request muon', _context.t0);
                   return _context.abrupt("return", _context.t0.message);
 
-                case 20:
+                case 19:
                 case "end":
                   return _context.stop();
               }
             }
-          }, _callee, this, [[0, 16]]);
+          }, _callee, this, [[0, 15]]);
         }));
 
         function request(_x) {

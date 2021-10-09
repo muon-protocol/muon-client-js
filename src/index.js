@@ -20,11 +20,10 @@ class Muon {
         data: { result }
       } = muonResponse
 
-      let reqId = `0x${result.cid.substr(1)}`
-      let groupAddress = result.signatures[0].owner
-      let signature = result.signatures[0].signature
-      let nonceAddress = result.data.init.nonceAddress
-      console.log('Data Muon SDK')
+      let reqId = `0x${result.cid?.substr(1)}`
+      let groupAddress = result.signatures[0]?.owner
+      let signature = result.signatures[0]?.signature
+      let nonceAddress = result.data?.init?.nonceAddress
       let sigs = [
         {
           signature: signature,
@@ -34,7 +33,6 @@ class Muon {
       ]
 
       let responseData = {
-        newData: true,
         ...result,
         reqId,
         sigs
