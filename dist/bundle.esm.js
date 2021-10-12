@@ -18403,7 +18403,7 @@ var Muon = /*#__PURE__*/function () {
     key: "request",
     value: function () {
       var _request = _asyncToGenerator( /*#__PURE__*/regenerator.mark(function _callee(dataInfo) {
-        var apiInstance, muonResponse, _result$cid, _result$signatures$, _result$signatures$2, _result$data, _result$data$init, result, reqId, groupAddress, signature, nonceAddress, sigs, responseData;
+        var apiInstance, muonResponse, result, responseData, _result$cid, _result$signatures$, _result$signatures$2, _result$data, _result$data$init, reqId, groupAddress, signature, nonceAddress, sigs;
 
         return regenerator.wrap(function _callee$(_context) {
           while (1) {
@@ -18418,45 +18418,51 @@ var Muon = /*#__PURE__*/function () {
                 muonResponse = _context.sent;
 
                 if (!muonResponse.data.success) {
-                  _context.next = 16;
+                  _context.next = 11;
                   break;
                 }
 
                 result = muonResponse.data.result;
-                reqId = "0x".concat((_result$cid = result.cid) === null || _result$cid === void 0 ? void 0 : _result$cid.substr(1));
-                groupAddress = (_result$signatures$ = result.signatures[0]) === null || _result$signatures$ === void 0 ? void 0 : _result$signatures$.owner;
-                signature = (_result$signatures$2 = result.signatures[0]) === null || _result$signatures$2 === void 0 ? void 0 : _result$signatures$2.signature;
-                nonceAddress = (_result$data = result.data) === null || _result$data === void 0 ? void 0 : (_result$data$init = _result$data.init) === null || _result$data$init === void 0 ? void 0 : _result$data$init.nonceAddress;
-                sigs = [{
-                  signature: signature,
-                  owner: groupAddress,
-                  nonce: nonceAddress
-                }];
-                responseData = _objectSpread(_objectSpread({}, result), {}, {
-                  reqId: reqId,
-                  sigs: sigs
-                });
+
+                if (result.confirmed) {
+                  reqId = "0x".concat((_result$cid = result.cid) === null || _result$cid === void 0 ? void 0 : _result$cid.substr(1));
+                  groupAddress = (_result$signatures$ = result.signatures[0]) === null || _result$signatures$ === void 0 ? void 0 : _result$signatures$.owner;
+                  signature = (_result$signatures$2 = result.signatures[0]) === null || _result$signatures$2 === void 0 ? void 0 : _result$signatures$2.signature;
+                  nonceAddress = (_result$data = result.data) === null || _result$data === void 0 ? void 0 : (_result$data$init = _result$data.init) === null || _result$data$init === void 0 ? void 0 : _result$data$init.nonceAddress;
+                  sigs = [{
+                    signature: signature,
+                    owner: groupAddress,
+                    nonce: nonceAddress
+                  }];
+                  responseData = _objectSpread(_objectSpread({}, result), {}, {
+                    reqId: reqId,
+                    sigs: sigs
+                  });
+                } else {
+                  responseData = _objectSpread({}, result);
+                }
+
                 return _context.abrupt("return", responseData);
 
-              case 16:
+              case 11:
                 return _context.abrupt("return", muonResponse.data);
 
-              case 17:
-                _context.next = 23;
+              case 12:
+                _context.next = 18;
                 break;
 
-              case 19:
-                _context.prev = 19;
+              case 14:
+                _context.prev = 14;
                 _context.t0 = _context["catch"](0);
                 console.log('error happend in request muon', _context.t0);
                 return _context.abrupt("return", _context.t0.message);
 
-              case 23:
+              case 18:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[0, 19]]);
+        }, _callee, this, [[0, 14]]);
       }));
 
       function request(_x) {

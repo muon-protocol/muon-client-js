@@ -21,23 +21,29 @@ class Muon {
         let {
           data: { result }
         } = muonResponse
-        let reqId = `0x${result.cid?.substr(1)}`
-        let groupAddress = result.signatures[0]?.owner
-        let signature = result.signatures[0]?.signature
-        let nonceAddress = result.data?.init?.nonceAddress
-        let sigs = [
-          {
-            signature: signature,
-            owner: groupAddress,
-            nonce: nonceAddress
-          }
-        ]
+        let responseData
+        if (result.confirmed) {
+          let reqId = `0x${result.cid?.substr(1)}`
+          let groupAddress = result.signatures[0]?.owner
+          let signature = result.signatures[0]?.signature
+          let nonceAddress = result.data?.init?.nonceAddress
+          let sigs = [
+            {
+              signature: signature,
+              owner: groupAddress,
+              nonce: nonceAddress
+            }
+          ]
 
-        let responseData = {
-          ...result,
-          reqId,
-          sigs
+          responseData = {
+            ...result,
+            reqId,
+            sigs
+          }
+        } else {
+          responseData = { ...result }
         }
+
         return responseData
       } else return muonResponse.data
     } catch (error) {
