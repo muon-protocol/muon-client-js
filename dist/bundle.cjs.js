@@ -590,7 +590,7 @@ var Muon = /*#__PURE__*/function () {
     key: "request",
     value: function () {
       var _request = _asyncToGenerator( /*#__PURE__*/regenerator.mark(function _callee(dataInfo) {
-        var apiInstance, muonResponse, result, responseData, _result$cid, _result$signatures$, _result$signatures$2, _result$data, _result$data$init, reqId, groupAddress, signature, nonceAddress, sigs;
+        var apiInstance, muonResponse, result, responseData, _result$signatures$, _result$data, _result$data$init, reqId, signature, nonceAddress, sigs;
 
         return regenerator.wrap(function _callee$(_context) {
           while (1) {
@@ -612,13 +612,13 @@ var Muon = /*#__PURE__*/function () {
                 result = muonResponse.data.result;
 
                 if (result.confirmed) {
-                  reqId = "0x".concat((_result$cid = result.cid) === null || _result$cid === void 0 ? void 0 : _result$cid.substr(1));
-                  groupAddress = (_result$signatures$ = result.signatures[0]) === null || _result$signatures$ === void 0 ? void 0 : _result$signatures$.owner;
-                  signature = (_result$signatures$2 = result.signatures[0]) === null || _result$signatures$2 === void 0 ? void 0 : _result$signatures$2.signature;
+                  reqId = result.reqId; //let groupAddress = result.signatures[0]?.owner
+
+                  signature = (_result$signatures$ = result.signatures[0]) === null || _result$signatures$ === void 0 ? void 0 : _result$signatures$.signature;
                   nonceAddress = (_result$data = result.data) === null || _result$data === void 0 ? void 0 : (_result$data$init = _result$data.init) === null || _result$data$init === void 0 ? void 0 : _result$data$init.nonceAddress;
                   sigs = [{
                     signature: signature,
-                    owner: groupAddress,
+                    //owner: groupAddress,
                     nonce: nonceAddress
                   }];
                   responseData = _objectSpread(_objectSpread({}, result), {}, {

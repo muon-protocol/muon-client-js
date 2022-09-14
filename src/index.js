@@ -23,14 +23,14 @@ class Muon {
         } = muonResponse
         let responseData
         if (result.confirmed) {
-          let reqId = `0x${result.cid?.substr(1)}`
-          let groupAddress = result.signatures[0]?.owner
+          let reqId = result.reqId;
+          //let groupAddress = result.signatures[0]?.owner
           let signature = result.signatures[0]?.signature
           let nonceAddress = result.data?.init?.nonceAddress
           let sigs = [
             {
               signature: signature,
-              owner: groupAddress,
+              //owner: groupAddress,
               nonce: nonceAddress
             }
           ]
